@@ -19,5 +19,4 @@ if __name__ == '__main__':
 
     app.run(host="0.0.0.0")
 
-#'/api/v1/details' #
-#'/api/v1/healthz' 
+
