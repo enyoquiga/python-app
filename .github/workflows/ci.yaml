@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+    paths:
+      - src/**
+    branches:
+      - master
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.HARBORDT_USERNAME }}
+          password: ${{ secrets.HARBORDT_TOKEN }}
+          registry: harbordt.codesa.com.co
+
+      -
+        name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: harbordt.codesa.com.co/soporte/python-app:${GITHUB_SHA::6}
