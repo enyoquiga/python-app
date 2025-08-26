@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: harbordt.codesa.com.co/soporte/python-app:1.0.0
+        image: enequintero/python-app:1.0.0
         ports:
         - containerPort: 5000
-      imagePullSecrets:
-      - name: harbor
+     # imagePullSecrets:
+     # - name: harbor
