@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: enequintero/python-app
   pullPolicy: IfNotPresent
-  tag: fd2574e
+  tag: 3237b43
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
