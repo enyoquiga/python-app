@@ -19,4 +19,4 @@ if __name__ == '__main__':
 
     app.run(host="0.0.0.0")
 
-#Aplicacion Python con runner con dependnecia e instalaccion de argocd :) :)!
+#Aplicacion Python con runner con dependnecia e instalaccion de argocd :)!
