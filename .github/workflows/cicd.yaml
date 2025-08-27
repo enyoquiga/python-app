@@ -1,4 +1,4 @@
-name: ci
+name: cicd
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
       - master
 
 jobs:
-  docker:
-    runs-on: ubuntu-latest
+  ci:
+    runs-on:  ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,3 +29,17 @@ jobs:
         with:
           push: true
           tags: enequintero/python-app:${{ env.SHORT_SHA }}
+
+  cd:
+    needs: ci
+    runs-on: self-hosted
+    steps:
+ 
+      - name: Argocd app sync
+        run: |
+          argocd login https://argocd-server.argocd \ 
+            --insecure \
+            --grpc-web \ 
+            --username admin \
+            --password ${{ secrets.ARGOCD_PASSWORD }}
+          argocd app sync python-app
