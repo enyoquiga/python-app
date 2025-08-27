@@ -42,7 +42,7 @@ jobs:
  
       - name: Modify values file
         run: |
-          echo ${{needs.ci.outputs.commit_id}
+          echo ${{needs.ci.outputs.commit_id}}
           pip install yq
           yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
 
