@@ -29,12 +29,28 @@ jobs:
         with:
           push: true
           tags: enequintero/python-app:${{ env.SHORT_SHA }}
+    outputs:
+      commit_id: ${{ env.SHORT_SHA }}
 
   cd:
     needs: ci
     runs-on: self-hosted
     steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v3
  
+      - name: Modify values file
+        run: |
+          echo ${{needs.ci.outputs.commit_id}
+          pip install yq
+          yq -Yi '.image.tag = "${{needs.ci.outputs.commit_id}}"' charts/python-app/values.yaml
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Updates values.yaml with commit ${{needs.ci.outputs.commit_id}}'
+
       - name: Install Argocd
         run: |
           curl -sSL -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
