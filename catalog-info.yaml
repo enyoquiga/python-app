@@ -5,8 +5,8 @@ metadata:
   description: Python app that displays the time
   annotations:
     github.com/project-slug: enyoquiga/python-app
-
 spec:
   type: service
-  owner: enyoquiga@example.com
+  owner: development
   lifecycle: experimental
+
