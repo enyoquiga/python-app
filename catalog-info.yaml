@@ -7,5 +7,5 @@ metadata:
     github.com/project-slug: enyoquiga/python-app
 spec:
   type: service
-  owner: development
+  owner: group:default/development
   lifecycle: experimental
